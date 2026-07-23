@@ -24,21 +24,24 @@ router.get("/simulador", (req, res) => {
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Simulador Conecta-Zap</title>
 <style>
-  body { font-family: Arial, sans-serif; background: #e5ddd5; margin: 0; }
-  header { background: #075e54; color: #fff; padding: 12px 16px; }
+  * { box-sizing: border-box }
+  body { font-family: Arial, sans-serif; background: #e5ddd5; margin: 0; height: 100vh; display: flex; flex-direction: column; }
+  header { background: #075e54; color: #fff; padding: 10px 16px; flex: none; }
   header small { opacity: .8 }
-  #chat { max-width: 620px; margin: 0 auto; padding: 16px; min-height: 60vh; }
+  #topo { background: #f0f0f0; padding: 8px 16px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; flex: none; }
+  #chat { flex: 1; overflow-y: auto; padding: 16px; }
+  #chat-inner { max-width: 620px; margin: 0 auto; }
   .msg { max-width: 75%; padding: 8px 12px; border-radius: 8px; margin: 6px 0; white-space: pre-wrap; font-size: 15px; }
   .bot { background: #fff; margin-right: auto; }
   .eu  { background: #dcf8c6; margin-left: auto; }
   .img { display: block; max-width: 100%; border-radius: 8px; margin-bottom: 6px; }
-  #barra { max-width: 620px; margin: 0 auto; display: flex; gap: 8px; padding: 12px 16px 24px; }
+  #barra { background: #f0f0f0; display: flex; gap: 8px; padding: 10px 16px; flex: none; }
   input, button { font-size: 15px; padding: 10px; border-radius: 20px; border: 1px solid #ccc; }
   #texto { flex: 1 }
   button { background: #075e54; color: #fff; border: none; cursor: pointer; padding: 10px 16px; }
-  #topo { max-width: 620px; margin: 0 auto; padding: 10px 16px; display: flex; gap: 8px; align-items: center; }
   #disparar { background: #128c7e }
 </style>
 </head>
@@ -48,14 +51,16 @@ router.get("/simulador", (req, res) => {
   <label>Seu número: <input id="tel" value="5589994132059" size="14"></label>
   <button id="disparar" onclick="disparar()">⏰ Simular disparo das 9h</button>
 </div>
-<div id="chat"></div>
+<div id="chat"><div id="chat-inner"></div></div>
 <div id="barra">
   <input id="texto" placeholder="Digite como se fosse o idoso... (ex.: quero participar)">
   <button onclick="enviar()">Enviar</button>
 </div>
 <script>
 const chat = document.getElementById("chat");
+const chatInner = document.getElementById("chat-inner");
 let minhas = [];
+let totalAnterior = -1;
 
 function tel() { return document.getElementById("tel").value.trim(); }
 
@@ -87,12 +92,17 @@ async function atualizar() {
     ...minhas.map(m => ({ ...m, quem: "eu" })),
     ...doBot.map(m => ({ ...m, quem: "bot" }))
   ].sort((a, b) => a.data.localeCompare(b.data));
-  chat.innerHTML = tudo.map(m =>
+
+  // Só redesenha e rola quando chega mensagem nova (não atrapalha quem está lendo)
+  if (tudo.length === totalAnterior) return;
+  totalAnterior = tudo.length;
+
+  chatInner.innerHTML = tudo.map(m =>
     '<div class="msg ' + m.quem + '">' +
     (m.imagem ? '<img class="img" src="' + m.imagem + '" alt="infográfico">' : '') +
     m.texto.replace(/</g, "&lt;") + '</div>'
   ).join("");
-  window.scrollTo(0, document.body.scrollHeight);
+  chat.scrollTop = chat.scrollHeight;
 }
 
 document.getElementById("texto").addEventListener("keydown", e => { if (e.key === "Enter") enviar(); });
