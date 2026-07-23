@@ -33,7 +33,7 @@ router.get("/simulador", (req, res) => {
   .msg { max-width: 75%; padding: 8px 12px; border-radius: 8px; margin: 6px 0; white-space: pre-wrap; font-size: 15px; }
   .bot { background: #fff; margin-right: auto; }
   .eu  { background: #dcf8c6; margin-left: auto; }
-  .img { font-size: 12px; color: #555; border: 1px dashed #999; padding: 4px 8px; border-radius: 6px; margin-bottom: 4px; }
+  .img { display: block; max-width: 100%; border-radius: 8px; margin-bottom: 6px; }
   #barra { max-width: 620px; margin: 0 auto; display: flex; gap: 8px; padding: 12px 16px 24px; }
   input, button { font-size: 15px; padding: 10px; border-radius: 20px; border: 1px solid #ccc; }
   #texto { flex: 1 }
@@ -89,7 +89,7 @@ async function atualizar() {
   ].sort((a, b) => a.data.localeCompare(b.data));
   chat.innerHTML = tudo.map(m =>
     '<div class="msg ' + m.quem + '">' +
-    (m.imagem ? '<div class="img">🖼 infográfico: ' + m.imagem + '</div>' : '') +
+    (m.imagem ? '<img class="img" src="' + m.imagem + '" alt="infográfico">' : '') +
     m.texto.replace(/</g, "&lt;") + '</div>'
   ).join("");
   window.scrollTo(0, document.body.scrollHeight);
