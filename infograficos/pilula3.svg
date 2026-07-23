@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080">
+  <rect width="1080" height="1080" fill="#FFFFFF"/>
+  <rect width="1080" height="230" fill="#1F4E79"/>
+  <text x="60" y="70" font-size="34" font-weight="bold" fill="#D6E4F0" font-family="DejaVu Sans">CONECTA-ZAP  •  P&#205;LULA 3 DE 10</text>
+  <text x="60" y="165" font-size="58" font-weight="bold" fill="#FFFFFF" font-family="DejaVu Sans">Banco não pede senha!</text>
+  <text x="60" y="272" font-size="40" font-weight="bold" fill="#1F4E79" font-family="DejaVu Sans">Guarde bem isto:</text>
+  
+    <circle cx="120" cy="390.8333333333333" r="52" fill="#E07B00"/>
+    <text x="120" y="416.8333333333333" font-size="72" font-weight="bold" fill="#FFFFFF" text-anchor="middle" font-family="DejaVu Sans">1</text>
+    <text x="210" y="406.8333333333333" font-size="44" font-weight="bold" fill="#1A1A1A" font-family="DejaVu Sans">Banco não liga pedindo senha</text>
+    <circle cx="120" cy="592.5" r="52" fill="#E07B00"/>
+    <text x="120" y="618.5" font-size="72" font-weight="bold" fill="#FFFFFF" text-anchor="middle" font-family="DejaVu Sans">2</text>
+    <text x="210" y="608.5" font-size="44" font-weight="bold" fill="#1A1A1A" font-family="DejaVu Sans">Nunca passe códigos</text>
+    <circle cx="120" cy="794.1666666666666" r="52" fill="#E07B00"/>
+    <text x="120" y="820.1666666666666" font-size="72" font-weight="bold" fill="#FFFFFF" text-anchor="middle" font-family="DejaVu Sans">3</text>
+    <text x="210" y="810.1666666666666" font-size="44" font-weight="bold" fill="#1A1A1A" font-family="DejaVu Sans">Pode desligar sem medo</text>
+  <rect y="925" width="1080" height="155" fill="#D6E4F0"/>
+  <text x="540" y="1010" font-size="42" font-weight="bold" fill="#1F4E79" text-anchor="middle" font-family="DejaVu Sans">Anote os 3 sinais em um papel</text>
+</svg>

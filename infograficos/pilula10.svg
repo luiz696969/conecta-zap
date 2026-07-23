@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080">
+  <rect width="1080" height="1080" fill="#FFFFFF"/>
+  <rect width="1080" height="230" fill="#1F4E79"/>
+  <text x="60" y="70" font-size="34" font-weight="bold" fill="#D6E4F0" font-family="DejaVu Sans">CONECTA-ZAP  •  P&#205;LULA 10 DE 10</text>
+  <text x="60" y="165" font-size="58" font-weight="bold" fill="#FFFFFF" font-family="DejaVu Sans">Parabéns! Você concluiu</text>
+  <text x="60" y="272" font-size="40" font-weight="bold" fill="#1F4E79" font-family="DejaVu Sans">Veja tudo o que você aprendeu:</text>
+  
+    <circle cx="120" cy="365.625" r="52" fill="#E07B00"/>
+    <text x="120" y="391.625" font-size="72" font-weight="bold" fill="#FFFFFF" text-anchor="middle" font-family="DejaVu Sans">1</text>
+    <text x="210" y="381.625" font-size="44" font-weight="bold" fill="#1A1A1A" font-family="DejaVu Sans">Reconhecer golpes</text>
+    <circle cx="120" cy="516.875" r="52" fill="#E07B00"/>
+    <text x="120" y="542.875" font-size="72" font-weight="bold" fill="#FFFFFF" text-anchor="middle" font-family="DejaVu Sans">2</text>
+    <text x="210" y="532.875" font-size="44" font-weight="bold" fill="#1A1A1A" font-family="DejaVu Sans">WhatsApp protegido</text>
+    <circle cx="120" cy="668.125" r="52" fill="#E07B00"/>
+    <text x="120" y="694.125" font-size="72" font-weight="bold" fill="#FFFFFF" text-anchor="middle" font-family="DejaVu Sans">3</text>
+    <text x="210" y="684.125" font-size="44" font-weight="bold" fill="#1A1A1A" font-family="DejaVu Sans">Gov.br e Meu SUS Digital</text>
+    <circle cx="120" cy="819.375" r="52" fill="#E07B00"/>
+    <text x="120" y="845.375" font-size="72" font-weight="bold" fill="#FFFFFF" text-anchor="middle" font-family="DejaVu Sans">4</text>
+    <text x="210" y="835.375" font-size="44" font-weight="bold" fill="#1A1A1A" font-family="DejaVu Sans">Videochamada e Pix seguros</text>
+  <rect y="925" width="1080" height="155" fill="#D6E4F0"/>
+  <text x="540" y="990" font-size="42" font-weight="bold" fill="#1F4E79" text-anchor="middle" font-family="DejaVu Sans">Ajuda: Procon 151 • Polícia 190. Sua nota</text><text x="540" y="1040" font-size="42" font-weight="bold" fill="#1F4E79" text-anchor="middle" font-family="DejaVu Sans">de 0 a 10?</text>
+</svg>
