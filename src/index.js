@@ -23,6 +23,23 @@ app.get("/", (req, res) => {
   });
 });
 
+// Política de privacidade (exigida pela Meta para publicar o app)
+app.get("/privacidade", (req, res) => {
+  res.send(`<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><title>Política de Privacidade - Conecta-Zap</title></head>
+<body style="font-family:Arial;max-width:700px;margin:40px auto;padding:0 16px;line-height:1.6">
+<h1>Política de Privacidade — Conecta-Zap</h1>
+<p>O Conecta-Zap é um projeto de extensão acadêmica (iCEV) sem fins lucrativos, que envia dicas educativas de letramento digital para idosos via WhatsApp.</p>
+<h2>Dados coletados</h2>
+<p>Armazenamos apenas: número de telefone, primeiro nome do perfil do WhatsApp e as respostas enviadas ao projeto. Nada mais.</p>
+<h2>Uso dos dados</h2>
+<p>Os dados são usados exclusivamente para enviar as 10 mensagens educativas do projeto e medir seu impacto de forma anônima no relatório acadêmico. Não vendemos nem compartilhamos dados com terceiros.</p>
+<h2>Cancelamento e exclusão</h2>
+<p>O participante pode sair a qualquer momento respondendo "SAIR". Para excluir seus dados, basta solicitar pelo próprio WhatsApp ou pelo e-mail luizjogador9@gmail.com.</p>
+<h2>Contato</h2>
+<p>Responsável: equipe do projeto Conecta-Zap — iCEV, Teresina-PI. E-mail: luizjogador9@gmail.com</p>
+</body></html>`);
+});
+
 // Relatório de impacto: alcance + feedback coletado
 app.get("/relatorio", (req, res) => {
   const contatos = db.carregar();
