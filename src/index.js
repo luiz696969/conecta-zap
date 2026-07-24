@@ -12,6 +12,7 @@ app.use(express.json());
 app.use(webhook);
 app.use(simulador);
 app.use(telegram.router);
+app.use(require("./painel"));
 
 // Página inicial: status do bot (útil para mostrar no vídeo demo)
 app.get("/", (req, res) => {
