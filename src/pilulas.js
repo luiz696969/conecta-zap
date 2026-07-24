@@ -10,7 +10,7 @@ const PILULAS = [
     imagem: "https://raw.githubusercontent.com/luiz696969/conecta-zap/main/infograficos/pilula1.png",
     texto:
       "Olá! 😊 Que alegria ter você aqui!\n\n" +
-      "Este é o Conecta-Zap, um curso gratuito pelo WhatsApp para você usar o celular com mais segurança e confiança.\n\n" +
+      "Este é o Conecta-Zap, um curso gratuito, direto no seu celular, para você usar a internet com mais segurança e confiança.\n\n" +
       "Funciona assim: durante 10 dias, você vai receber 1 mensagem por dia, bem curtinha, com uma imagem para ajudar a entender.\n\n" +
       "Não precisa pagar nada e não precisa sair de casa. É só ler com calma, no seu tempo.\n\n" +
       "🎯 Desafio de hoje: responda esta mensagem com um áudio dizendo \"oi\". É só apertar e segurar o microfone 🎤 aqui embaixo e falar. Vamos tentar?"

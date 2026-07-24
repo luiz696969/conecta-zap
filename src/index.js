@@ -4,12 +4,14 @@ const express = require("express");
 const webhook = require("./webhook");
 const scheduler = require("./scheduler");
 const simulador = require("./simulador");
+const telegram = require("./telegram");
 const db = require("./db");
 
 const app = express();
 app.use(express.json());
 app.use(webhook);
 app.use(simulador);
+app.use(telegram.router);
 
 // Página inicial: status do bot (útil para mostrar no vídeo demo)
 app.get("/", (req, res) => {
@@ -57,6 +59,9 @@ app.get("/relatorio", (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`[bot] Conecta-Zap no ar na porta ${PORT}`);
+  console.log(`[bot] Conecta-Zap no ar na porta ${PORT} (canal: ${process.env.CANAL || "whatsapp"})`);
   scheduler.iniciar();
+  // No Render, RENDER_EXTERNAL_URL é preenchida automaticamente
+  const urlBase = process.env.BASE_URL || process.env.RENDER_EXTERNAL_URL;
+  if (urlBase) telegram.configurarWebhook(urlBase);
 });

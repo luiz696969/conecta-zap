@@ -1,22 +1,29 @@
 // Disparo diário automático das pílulas
 const cron = require("node-cron");
 const db = require("./db");
-const { enviarImagem, enviarTemplate } = require("./whatsapp");
+const whatsapp = require("./whatsapp");
+const telegram = require("./telegram");
 const { PILULAS } = require("./pilulas");
 
 async function dispararPilulas() {
   const ativos = db.listarAtivos();
-  console.log(`[scheduler] disparo iniciado - ${ativos.length} contato(s) ativo(s)`);
+  const canal = process.env.CANAL || "whatsapp";
+  console.log(`[scheduler] disparo iniciado (${canal}) - ${ativos.length} contato(s) ativo(s)`);
 
   for (const contato of ativos) {
     const dia = contato.dia_atual + 1;
     const pilula = PILULAS.find((p) => p.dia === dia);
     if (!pilula) continue;
 
-    const modoLivre = process.env.MODO_LIVRE === "true";
-    const ok = modoLivre
-      ? await enviarImagem(contato.telefone, pilula.imagem, pilula.texto)
-      : await enviarTemplate(contato.telefone, pilula.template, pilula.imagem);
+    let ok;
+    if (canal === "telegram") {
+      ok = await telegram.enviarImagem(contato.telefone, pilula.imagem, pilula.texto);
+    } else {
+      const modoLivre = process.env.MODO_LIVRE === "true";
+      ok = modoLivre
+        ? await whatsapp.enviarImagem(contato.telefone, pilula.imagem, pilula.texto)
+        : await whatsapp.enviarTemplate(contato.telefone, pilula.template, pilula.imagem);
+    }
 
     if (ok) {
       db.avancarDia(contato.telefone);
