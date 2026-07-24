@@ -16,6 +16,20 @@ router.post("/painel/disparar", async (req, res) => {
   res.json({ ok: true });
 });
 
+// Volta todo mundo para o dia 0 (testes repetidos)
+router.post("/painel/resetar", (req, res) => {
+  if (!autorizado(req)) return res.status(403).send("Chave errada");
+  const n = db.resetarTrilha();
+  res.json({ ok: true, contatos: n });
+});
+
+// Apaga todos os cadastros
+router.post("/painel/limpar", (req, res) => {
+  if (!autorizado(req)) return res.status(403).send("Chave errada");
+  db.limparTudo();
+  res.json({ ok: true });
+});
+
 router.get("/painel", (req, res) => {
   if (!autorizado(req)) return res.status(403).send("Acesso negado. Use /painel?chave=SUA_CHAVE");
 
@@ -49,6 +63,8 @@ router.get("/painel", (req, res) => {
   .acoes { margin: 20px 0; display: flex; gap: 10px; flex-wrap: wrap; }
   button, a.btn { background: #1F4E79; color: #fff; border: none; padding: 12px 20px; border-radius: 8px; font-size: 15px; cursor: pointer; text-decoration: none; display: inline-block; }
   #disparar { background: #128c7e; }
+  #resetar { background: #b8860b; }
+  #limpar { background: #a32d2d; }
   #aviso { margin: 10px 0; font-weight: bold; color: #128c7e; }
 </style>
 </head>
@@ -62,6 +78,8 @@ router.get("/painel", (req, res) => {
   </div>
   <div class="acoes">
     <button id="disparar" onclick="disparar()">🚀 Disparar pílula do dia agora</button>
+    <button id="resetar" onclick="resetar()">🔁 Resetar trilha (dia 0)</button>
+    <button id="limpar" onclick="limpar()">🗑 Apagar cadastros</button>
     <button onclick="location.reload()">🔄 Atualizar</button>
     <a class="btn" href="/relatorio" target="_blank">💾 Backup (JSON)</a>
   </div>
@@ -77,6 +95,16 @@ async function disparar() {
   document.getElementById("aviso").textContent = "Enviando...";
   const r = await fetch("/painel/disparar?chave=${chave}", { method: "POST" });
   document.getElementById("aviso").textContent = r.ok ? "✅ Disparo concluído! Clique em Atualizar." : "❌ Erro no disparo.";
+}
+async function resetar() {
+  if (!confirm("Voltar TODOS os contatos para o dia 0 (trilha reiniciada)?")) return;
+  const r = await fetch("/painel/resetar?chave=${chave}", { method: "POST" });
+  document.getElementById("aviso").textContent = r.ok ? "✅ Trilha resetada! Dispare para receber a pílula 1." : "❌ Erro.";
+}
+async function limpar() {
+  if (!confirm("Apagar TODOS os cadastros? Isso não tem volta.")) return;
+  const r = await fetch("/painel/limpar?chave=${chave}", { method: "POST" });
+  if (r.ok) location.reload();
 }
 </script>
 </body>

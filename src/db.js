@@ -54,4 +54,21 @@ function salvarFeedback(telefone, mensagem) {
   salvar(contatos);
 }
 
-module.exports = { carregar, buscar, cadastrar, listarAtivos, avancarDia, salvarFeedback };
+// Volta todos os contatos para o dia 0 (útil para testes repetidos)
+function resetarTrilha() {
+  const contatos = carregar();
+  contatos.forEach((c) => {
+    c.dia_atual = 0;
+    c.status = "ativo";
+    c.feedback = [];
+  });
+  salvar(contatos);
+  return contatos.length;
+}
+
+// Apaga todos os cadastros
+function limparTudo() {
+  salvar([]);
+}
+
+module.exports = { carregar, buscar, cadastrar, listarAtivos, avancarDia, salvarFeedback, resetarTrilha, limparTudo };
