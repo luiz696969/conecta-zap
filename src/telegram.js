@@ -1,5 +1,4 @@
 // Canal Telegram: recebimento (webhook) e envio das pílulas
-// Crie o bot com o @BotFather e coloque TELEGRAM_TOKEN no .env / Render
 const express = require("express");
 const axios = require("axios");
 const db = require("./db");
