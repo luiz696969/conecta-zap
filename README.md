@@ -99,4 +99,4 @@ A rota `GET /privacidade` expõe a política de privacidade do projeto, exigida 
 
 ## Equipe
 
-- Luiz Antonio — [completar com os membros do grupo]
+- Luiz Antonio 
